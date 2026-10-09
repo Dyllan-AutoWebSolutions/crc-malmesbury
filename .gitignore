@@ -1,0 +1,6 @@
+# Internal / client docs - keep out of public repo
+Brief and image ref/
+*.docx
+*.pdf
+desktop.ini
+.claude/
