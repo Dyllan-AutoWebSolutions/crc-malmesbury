@@ -57,9 +57,17 @@
     <main>
       <!-- ============================== HERO ============================== -->
       <section class="hero">
-        <div class="container hero__grid">
+        <div class="container">
+          <img
+            class="hero__image"
+            src="assets/images/header.webp"
+            alt="CRC 2026 theme: Invasion — The Second Wave. Love."
+            width="2680"
+            height="1300"
+            fetchpriority="high"
+          />
           <div class="hero__content">
-            <h1>Building One Church, In Many Locations</h1>
+            <h1>Building One Church<br class="br-desktop" /> In Many Locations</h1>
             <p class="lede">
               Join us this Sunday as we grow together in faith, community, and
               purpose. Wherever you are on your journey, there's a place for you
@@ -70,14 +78,6 @@
               <a href="sermons.html" class="btn btn--outline">Watch Online</a>
             </div>
           </div>
-          <img
-            class="hero__image"
-            src="assets/images/header.webp"
-            alt="CRC 2026 theme: Invasion — The Second Wave. Love."
-            width="2680"
-            height="1300"
-            fetchpriority="high"
-          />
         </div>
       </section>
 
@@ -127,39 +127,20 @@
         </div>
       </section>
 
-      <!-- ====================== QUICK LINK CARD ROW ====================== -->
+      <!-- ================= WELCOME + QUICK LINK CARDS ================= -->
       <section class="section section--muted section--border-top">
-        <div class="container grid grid--4">
-          <a href="connect.html" class="card card--link">
-            <h3>Service Times</h3>
-            <p>08:30 &amp; 18:00, Sundays</p>
-          </a>
-          <a href="ministries.html" class="card card--link">
-            <h3>Ministries</h3>
-            <p>Find your place to belong.</p>
-          </a>
-          <a href="homecell.html" class="card card--link">
-            <h3>Homecell</h3>
-            <p>Get connected to a homecell.</p>
-          </a>
-          <a href="sermons.html" class="card card--link">
-            <h3>Sermons</h3>
-            <p>Catch up on the latest message.</p>
-          </a>
-        </div>
-      </section>
-
-      <!-- ============================== WELCOME ============================== -->
-      <section class="section">
-        <div class="container two-col">
-          <!-- Real photography pending -->
-          <div class="placeholder placeholder--wide two-col__media">
-            <span class="placeholder__label"
-              >Congregation / community photo</span
-            >
-          </div>
-          <div>
-            <h2>You Have a Place Here</h2>
+        <div class="container welcome">
+          <div class="welcome__main">
+            <div class="welcome__media">
+              <!-- Client photo pending: replace the placeholder div with
+                   <img src="assets/images/..." alt="..."> — the overlay stays. -->
+              <div class="placeholder">
+                <span class="placeholder__label"
+                  >Congregation / community photo</span
+                >
+              </div>
+              <h2 class="welcome__title">You Have a Place Here</h2>
+            </div>
             <p class="stack-3">
               We are a church family built on love, grace, and community — and
               we would love for you to be part of it. Whatever season you are
@@ -170,6 +151,24 @@
                 >Learn Our Story →</a
               >
             </div>
+          </div>
+          <div class="welcome__links">
+            <a href="connect.html" class="card card--link">
+              <h3>Service Times</h3>
+              <p>08:30 &amp; 18:00, Sundays</p>
+            </a>
+            <a href="ministries.html" class="card card--link">
+              <h3>Ministries</h3>
+              <p>Find your place to belong.</p>
+            </a>
+            <a href="homecell.html" class="card card--link">
+              <h3>Homecell</h3>
+              <p>Get connected to a homecell.</p>
+            </a>
+            <a href="sermons.html" class="card card--link">
+              <h3>Sermons</h3>
+              <p>Catch up on the latest message.</p>
+            </a>
           </div>
         </div>
       </section>

@@ -14,6 +14,10 @@
   --color-border: #E6E5EC;
   --color-muted-bg: #FAFAFC;
   --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-red-bright: #F30D29;
+  --color-blue: #3314E0;
+  --color-plum: #900046; /* Connect banner — provisional, may change */
 
   /* Secondary accents — use sparingly, never as a primary UI colour */
   --color-purple: #A1159C;
@@ -1050,19 +1054,7 @@ p {
   padding-block: var(--space-6) var(--space-8);
 }
 
-.hero__content {
-  max-width: 620px;
-  margin-bottom: var(--space-4);
-}
-
-.hero__content .lede {
-  margin-top: var(--space-3);
-}
-
-.hero__content .btn-row {
-  margin-top: var(--space-4);
-}
-
+/* Banner first, directly under the nav; heading, lede and buttons below it. */
 .hero__image {
   display: block;
   width: 100%;
@@ -1070,18 +1062,101 @@ p {
   border-radius: var(--radius-card);
 }
 
-/* Desktop: text left, banner right, so the whole hero (incl. banner) sits
-   above the fold. Below 960px it stacks: text + buttons, then banner. */
+.hero__content {
+  margin-top: var(--space-6);
+}
+
+.hero__content .lede {
+  max-width: 720px;
+  margin-top: var(--space-3);
+}
+
+/* Forced line break that only applies on desktop; mobile wraps naturally. */
+.br-desktop {
+  display: none;
+}
+
 @media (min-width: 960px) {
-  .hero__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: var(--space-6);
-    align-items: center;
+  .br-desktop {
+    display: inline;
+  }
+}
+
+.hero__content .btn-row {
+  margin-top: var(--space-4);
+}
+
+/* ==========================================================================
+   Home — welcome block + quick link cards
+   Desktop: photo (heading overlaid) + copy on the left, 4 cards stacked on
+   the right. Below 860px it stacks and the cards fall back to a 2x2 grid.
+   ========================================================================== */
+
+.welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--space-6);
+}
+
+/* Photo grows to fill any extra height so the column bottoms line up */
+.welcome__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome__media {
+  flex: 1 0 auto;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.welcome__media > img,
+.welcome__media > .placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Navy fade along the bottom keeps the heading readable on any photo */
+.welcome__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(1, 0, 39, 0.8) 0%, rgba(1, 0, 39, 0) 55%);
+  pointer-events: none;
+}
+
+.welcome__title {
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 1;
+  color: var(--color-white);
+}
+
+.welcome__links {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (max-width: 860px) {
+  .welcome {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
   }
 
-  .hero__content {
-    margin-bottom: 0;
+  .welcome__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .welcome__links {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1132,6 +1207,91 @@ p {
 .banner .lede {
   margin-top: var(--space-2);
   max-width: 640px;
+}
+
+/* Black banner with flowing wave bands (About), ~50% taller than the default.
+   Bold + light stacked title and 2026 badge, after the CRC main site banners. */
+.banner--waves {
+  background: var(--color-black) url("../assets/images/banner-waves.svg") center / cover no-repeat;
+  border-bottom: 0;
+  padding-block: calc(var(--space-6) * 2);
+  /* Inset, rounded card lined up with the page content edges */
+  width: calc(100% - 2 * var(--space-3));
+  max-width: calc(var(--max-width) - 2 * var(--space-4));
+  margin: var(--space-4) auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .banner--waves {
+    width: calc(100% - 2 * var(--space-4));
+  }
+}
+
+.banner--waves .container {
+  position: relative;
+}
+
+/* Colour variants: red (Ministries), purple (Sermons), blue (Homecell),
+   plum (Connect) */
+.banner--waves.banner--red {
+  background-color: var(--color-red-bright);
+}
+
+.banner--waves.banner--purple {
+  background-color: var(--color-purple);
+}
+
+.banner--waves.banner--blue {
+  background-color: var(--color-blue);
+}
+
+.banner--waves.banner--plum {
+  background-color: var(--color-plum);
+}
+
+.banner--waves h1,
+.banner--waves .lede {
+  color: var(--color-white);
+}
+
+.banner__title {
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.banner__title span {
+  display: block;
+}
+
+.banner__title-light {
+  font-weight: 300;
+}
+
+.banner--waves .lede {
+  margin-top: var(--space-3);
+}
+
+.banner__badge {
+  position: absolute;
+  top: 50%;
+  right: var(--space-4);
+  width: 140px;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .banner__badge {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .banner--waves {
+    padding-block: var(--space-8);
+  }
 }
 
 /* ==========================================================================
