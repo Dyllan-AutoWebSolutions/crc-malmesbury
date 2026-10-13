@@ -286,7 +286,7 @@
       <section class="section">
         <div class="container">
           <div
-            class="card"
+            class="card card--navy"
             style="max-width: 560px; margin-inline: auto; text-align: center"
           >
             <h2>Don't Know Where to Start?</h2>
@@ -294,13 +294,48 @@
               Tell us your area and we'll connect you to a homecell near you.
             </p>
             <div class="btn-row stack-4" style="justify-content: center">
-              <a href="connect.html" class="btn btn--primary"
-                >Register Interest</a
+              <a href="connect.html" class="btn btn--primary btn--primary-invert"
+                data-open-dialog="homecell-dialog"
+                >Register Here</a
               >
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Homecell register pop-up — builds a pre-filled WhatsApp message (no form backend) -->
+      <dialog class="modal" id="homecell-dialog" aria-labelledby="homecell-dialog-title">
+        <form class="modal__form" id="homecell-form" data-whatsapp="27832274303" novalidate>
+          <button type="button" class="modal__close" data-close-dialog aria-label="Close">&times;</button>
+          <h2 id="homecell-dialog-title">Join a Homecell</h2>
+          <p class="modal__lede">Tell us where you live and we'll open WhatsApp with your message ready to send.</p>
+
+          <div class="field">
+            <label for="homecell-name">Name</label>
+            <input id="homecell-name" name="name" data-label="Name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="homecell-number">Number</label>
+            <input id="homecell-number" name="number" data-label="Number" type="tel" autocomplete="tel" inputmode="tel" required>
+          </div>
+          <div class="field">
+            <label for="homecell-email">Email <span class="field__optional">(optional)</span></label>
+            <input id="homecell-email" name="email" data-label="Email" type="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="homecell-town">Town</label>
+            <input id="homecell-town" name="town" data-label="Town" type="text" autocomplete="address-level2" placeholder="e.g. Malmesbury" required>
+          </div>
+          <div class="field">
+            <label for="homecell-area">Area</label>
+            <input id="homecell-area" name="area" data-label="Area" type="text" autocomplete="address-level3" placeholder="e.g. Wesbank" required>
+          </div>
+
+          <p class="modal__error" role="alert" hidden>Please fill in your name, number, town and area.</p>
+
+          <button type="submit" class="btn btn--whatsapp modal__submit">Send on WhatsApp</button>
+        </form>
+      </dialog>
     </main>
 
     <!-- ============================== FOOTER ============================== -->

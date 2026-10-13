@@ -326,6 +326,13 @@ p {
   background: var(--color-red-dark);
 }
 
+/* Red button that flips to white with red text on hover (for coloured backgrounds) */
+.btn--primary-invert:hover,
+.btn--primary-invert:focus-visible {
+  background: var(--color-white);
+  color: var(--color-red);
+}
+
 .btn--outline {
   background: transparent;
   border-color: var(--color-red);
@@ -724,6 +731,17 @@ p {
 
 .card--link {
   display: block;
+}
+
+/* CRC navy card with white text — homecell "Don't Know Where to Start?" */
+.card--navy {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.card--navy h2,
+.card--navy p {
+  color: var(--color-white);
 }
 
 /* Navy hover + zoom, title turns red: home quick links (.card--link), Homecell
@@ -1318,6 +1336,117 @@ p {
 .cta-banner .btn-row {
   margin-top: var(--space-4);
   justify-content: center;
+}
+
+/* ==========================================================================
+   Modal (native <dialog>) — Start Serving form
+   ========================================================================== */
+
+.modal {
+  width: min(480px, calc(100% - var(--space-4)));
+  max-height: calc(100% - var(--space-4));
+  margin: auto; /* reset zeroes margins; dialog centres via auto margins */
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  color: var(--color-body);
+  box-shadow: 0 24px 64px rgba(1, 0, 39, 0.35);
+}
+
+.modal::backdrop {
+  background: rgba(1, 0, 39, 0.7);
+}
+
+.modal__form {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.modal__form h2 {
+  color: var(--color-ink);
+  padding-right: var(--space-4);
+}
+
+.modal__lede {
+  font-size: var(--text-small);
+  color: var(--color-muted);
+  margin-bottom: var(--space-1);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--color-muted);
+  border-radius: var(--radius-btn);
+}
+
+.modal__close:hover,
+.modal__close:focus-visible {
+  color: var(--color-red);
+  background: var(--color-muted-bg);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+.field__optional {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--color-red);
+  outline-offset: 1px;
+  border-color: var(--color-red);
+}
+
+.field [aria-invalid="true"] {
+  border-color: var(--color-red);
+}
+
+.modal__error {
+  font-size: var(--text-small);
+  color: var(--color-red);
+}
+
+.modal__submit {
+  margin-top: var(--space-1);
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  .modal__form {
+    padding: var(--space-3);
+  }
 }
 
 /* ==========================================================================
