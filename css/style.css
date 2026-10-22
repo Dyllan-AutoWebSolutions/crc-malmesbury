@@ -333,6 +333,35 @@ p {
   color: var(--color-red);
 }
 
+/* Same flip on a white card: red border keeps the white button visible */
+.btn--on-light:hover,
+.btn--on-light:focus-visible {
+  border-color: var(--color-red);
+}
+
+/* Platform buttons in their brand colours; flip to white on hover like --primary-invert */
+.btn--youtube {
+  background: #FF0000;
+  color: var(--color-white);
+}
+
+.btn--facebook {
+  background: #1877F2;
+  color: var(--color-white);
+}
+
+.btn--youtube:hover,
+.btn--youtube:focus-visible {
+  background: var(--color-white);
+  color: #FF0000;
+}
+
+.btn--facebook:hover,
+.btn--facebook:focus-visible {
+  background: var(--color-white);
+  color: #1877F2;
+}
+
 .btn--outline {
   background: transparent;
   border-color: var(--color-red);
@@ -374,14 +403,15 @@ p {
 
 .btn--pill {
   border-radius: 999px;
-  background: var(--color-white);
-  color: var(--color-red);
+  background: var(--color-red);
+  color: var(--color-white);
   padding: 10px 24px;
 }
 
-.btn--pill:hover {
-  background: var(--color-red);
-  color: var(--color-white);
+.btn--pill:hover,
+.btn--pill:focus-visible {
+  background: var(--color-white);
+  color: var(--color-red);
 }
 
 .btn--sm {
@@ -954,6 +984,19 @@ p {
   aspect-ratio: 16 / 7;
 }
 
+/* Real photo in a card — same frame as .placeholder--card-media.
+   Set object-position inline per photo to keep faces in the crop. */
+.card__media {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  margin-bottom: var(--space-3);
+  background: var(--color-muted-bg);
+}
+
 /* ==========================================================================
    About page — pull quotes, value cards, leadership
    ========================================================================== */
@@ -996,6 +1039,92 @@ p {
 
 .value-card .eyebrow {
   margin-bottom: var(--space-1);
+}
+
+/* About — Mission, Vision & Values on navy: three outlined panels sat side by
+   side with a thin gap, rounded only on the outer corners (after CRC Worcester) */
+.mvv h2,
+.mvv h3 {
+  color: var(--color-white);
+}
+
+.mvv h3 {
+  font-weight: 800;
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+
+.mvv__panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Panel + frame colours sampled from the CRC Worcester site */
+.mvv__panel {
+  background-color: #09082E;
+  border: 1px solid #1A193D;
+  padding: var(--space-6) var(--space-5, 36px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover (or .is-in-view on touch): soft blurred glow washes over the panel */
+.mvv__panel:hover,
+.mvv__panel.is-in-view {
+  background-color: #0F0E3A;
+  background-image: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-color: #2A2950;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvv__panel {
+    transition: none;
+  }
+}
+
+.mvv__panel:first-child {
+  border-radius: 16px 0 0 16px;
+}
+
+.mvv__panel:last-child {
+  border-radius: 0 16px 16px 0;
+}
+
+@media (max-width: 860px) {
+  .mvv__panel:first-child {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .mvv__panel:last-child {
+    border-radius: 0 0 16px 16px;
+  }
+}
+
+.mvv__panel p {
+  color: var(--color-footer-text);
+  font-size: var(--text-small);
+}
+
+@media (max-width: 860px) {
+  .mvv__panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mvv .quote blockquote p {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-footer-text);
+}
+
+.mvv .quote figcaption {
+  color: var(--color-red);
 }
 
 .leader + .leader,

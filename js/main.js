@@ -2,7 +2,7 @@
 // No mouse means no :hover, so on touch devices and screens up to 1024px a card
 // gets .is-in-view (same styles as hover) while it crosses the middle of the screen.
 document.addEventListener('DOMContentLoaded', function () {
-  var cards = document.querySelectorAll('.card--link, .card--feature, .card--accent, .card--title-link');
+  var cards = document.querySelectorAll('.card--link, .card--feature, .card--accent, .card--title-link, .mvv__panel');
   if (!cards.length || !('IntersectionObserver' in window)) return;
 
   var touchOrSmall = window.matchMedia('(hover: none), (max-width: 1024px)');
